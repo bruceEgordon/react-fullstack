@@ -1,17 +1,20 @@
 import Navbar from './Navbar';
 import FsFeature from './FSFeature';
+import Login from './Login';
+import { useState } from 'react';
 
 function App() {
-  const handleLoginClick = () => {
-    console.log()
+  const [userId, setUserId] = useState("");
+
+  const handleLoginClick = (userId) => {
+    setUserId(userId);
   }
   return (
     <div className="App">
       <Navbar />
-      <input type="text" placeholder="enter user id" id="txtUserId" />
-      <button>Login</button>
+      <Login handleLoginClick={handleLoginClick} />
       <div className="content">
-        <FsFeature />
+        <FsFeature userId={userId}/>
       </div>
     </div>
   );
