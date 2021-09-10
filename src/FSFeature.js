@@ -17,7 +17,7 @@ const FsFeature = ({userId}) => {
             <h2>Full Stack Feature</h2>
             <div>User ID is: {userId}</div>
             {decision && <div>Featuer enabled: {decision.enabled.toString()}</div>}
-            <div>The number of recommendations is: {decision.variables['number_of_recs']}</div>
+            {decision && <div>The number of recommendations is: {decision.variables['number_of_recs']}</div>}
             {console.log(decision)}
         </div>
      );
