@@ -4,17 +4,19 @@ import AnimatedButton from "./AnimatedButton";
 
 const FsFeature = ({userId}) => {
     const [decision, setDecision] = useState(null);
+    const [theUser, setTheUser] = useState(null);
 
     useEffect(() => {
         const optiClientInst = createInstance({sdkKey: '4d2RRVwJzjzC2wFqLntwq'});
         optiClientInst.onReady().then(() => {
             const user = optiClientInst.createUserContext(userId);
-            setDecision(user.decide('product_recs_flag'))
+            setTheUser(user);
+            setDecision(user.decide('product_recs_flag'));
         });       
     }, [userId]);
 
     const handleButonClick = () => {
-        console.log("Annimated button clicked")
+        theUser.trackEvent('Add to cart');
     }
 
     return ( 
