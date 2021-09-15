@@ -1,5 +1,6 @@
 import { createInstance } from "@optimizely/optimizely-sdk";
 import { useState, useEffect } from "react";
+import AnimatedButton from "./AnimatedButton";
 
 const FsFeature = ({userId}) => {
     const [decision, setDecision] = useState(null);
@@ -12,12 +13,17 @@ const FsFeature = ({userId}) => {
         });       
     }, [userId]);
 
+    const handleButonClick = () => {
+        console.log("Annimated button clicked")
+    }
+
     return ( 
         <div className="feature">
             <h2>Full Stack Feature</h2>
             <div>User ID is: {userId}</div>
             {decision && <div>Featuer enabled: {decision.enabled.toString()}</div>}
             {decision && <div>The number of recommendations is: {decision.variables['number_of_recs']}</div>}
+            {decision && decision.enabled && <AnimatedButton handleButonClick={handleButonClick} />}
             {console.log(decision)}
         </div>
      );
